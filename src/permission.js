@@ -12,7 +12,7 @@ router.beforeEach(async(to, from, next) => {
 
   if (hasToken) {
     console.log('123')
-  } else {
+  } else { // 未登录时指向登录页面
     if (whiteList.indexOf(to.path) !== -1) {
       next()
     } else {
