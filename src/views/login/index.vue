@@ -1,16 +1,32 @@
 <template>
   <div class="login-container">
     <div class="login-box">
+      <!--头像-->
       <div class="avatar-box">
-        <img src="../../assets/logo.png" alt="" />
+        <img src="../../assets/logo.png" alt="">
       </div>
+      <el-form ref="loginForm" class="login-form" label-position="left">
+        <div class="title-container">
+          <h3 class="title">用户登录</h3>
+        </div>
+        <el-form-item>
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input></el-input>
+        </el-form-item>
+        <div class="btns">
+          <el-button type="primary">登录</el-button>
+          <el-button type="info">重置</el-button>
+        </div>
+      </el-form>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Login'
 }
 </script>
 
@@ -45,7 +61,7 @@ $bg: #2d3a4b;
       box-shadow: 0 0 10px #ddd;
       position: absolute;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       background-color: #fff;
       img {
         width: 100%;
@@ -54,6 +70,25 @@ $bg: #2d3a4b;
         background-color: #eee;
       }
     }
+  }
+}
+.btns {
+  display: flex;
+  justify-content: flex-end;
+}
+.login-form {
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.title-container {
+  .title{
+    font-size: 26px;
+    text-align: center;
+    font-weight: bold;
+    color: $bg;
   }
 }
 </style>
