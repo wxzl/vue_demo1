@@ -44,7 +44,7 @@ $bg: #2d3a4b;
 
   .login-box {
     width: 550px;
-    height: 400px;
+    height: 350px;
     background-color: white;
     border-radius: 3px;
     position: absolute;
