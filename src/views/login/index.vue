@@ -10,10 +10,10 @@
           <h3 class="title">用户登录</h3>
         </div>
         <el-form-item>
-          <el-input></el-input>
+          <el-input prefix-icon ="iconfont icon-user"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input></el-input>
+          <el-input prefix-icon ="iconfont icon-3702mima"></el-input>
         </el-form-item>
         <div class="btns">
           <el-button type="primary">登录</el-button>
@@ -43,7 +43,7 @@ $bg: #2d3a4b;
   overflow: hidden;
 
   .login-box {
-    width: 550px;
+    width: 400px;
     height: 350px;
     background-color: white;
     border-radius: 3px;
@@ -78,7 +78,7 @@ $bg: #2d3a4b;
 }
 .login-form {
   position: absolute;
-  top: 25%;
+  top: 20%;
   width: 100%;
   padding: 0 20px;
   box-sizing: border-box;

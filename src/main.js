@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/permission'
 import '@/styles/index.scss' // 全局css
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+import './assets/fonts/iconfont.css'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
