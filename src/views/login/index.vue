@@ -3,17 +3,29 @@
     <div class="login-box">
       <!--头像-->
       <div class="avatar-box">
-        <img src="../../assets/logo.png" alt="">
+        <img src="../../assets/logo.png" alt="" />
       </div>
-      <el-form ref="loginForm" class="login-form" label-position="left">
+      <el-form
+        ref="loginForm"
+        :model="loginForm"
+        class="login-form"
+        label-position="left"
+      >
         <div class="title-container">
           <h3 class="title">用户登录</h3>
         </div>
         <el-form-item>
-          <el-input prefix-icon ="iconfont icon-user"></el-input>
+          <el-input
+            v-model="loginForm.username"
+            prefix-icon="iconfont icon-user"
+          ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input prefix-icon ="iconfont icon-3702mima"></el-input>
+          <el-input
+            v-model="loginForm.password"
+            prefix-icon="iconfont icon-3702mima"
+            :type="passwordType"
+          ></el-input>
         </el-form-item>
         <div class="btns">
           <el-button type="primary">登录</el-button>
@@ -26,7 +38,17 @@
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Login',
+  data() {
+    return {
+      // 登录表单数据绑定
+      loginForm: {
+        username: 'admin',
+        password: 'password'
+      },
+      passwordType: 'password' // 密码类型
+    }
+  }
 }
 </script>
 
@@ -84,7 +106,7 @@ $bg: #2d3a4b;
   box-sizing: border-box;
 }
 .title-container {
-  .title{
+  .title {
     font-size: 26px;
     text-align: center;
     font-weight: bold;
