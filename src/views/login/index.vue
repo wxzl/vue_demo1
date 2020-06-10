@@ -25,13 +25,11 @@
           <el-input
             v-model="loginForm.password"
             prefix-icon="iconfont icon-3702mima"
-            :type="passwordType"
-          ></el-input>
+            :type="passwordType">
+            </el-input>
         </el-form-item>
         <div class="btns">
-          <el-button type="primary" @click.native.prevent="handleLogin"
-            >登录</el-button
-          >
+          <el-button :loading="loading" type="primary" @click.native.prevent="handleLogin">登录</el-button>
           <el-button type="info" @click="resetLoginForm">重置</el-button>
         </div>
       </el-form>
@@ -78,7 +76,8 @@ export default {
           // { required: true, message: '请输入密码', trigger: 'blur' },
           // { min: 3, max: 10, message: '长度在3到10个字符', trigger: 'blur' },
         ]
-      }
+      },
+      loading: false
     }
   },
   methods: {
@@ -90,6 +89,7 @@ export default {
     handleLogin() {
       this.$refs.loginFormRef.validate((valid) => {
         if (valid) {
+          this.loading = true
           console.log('true')
         } else {
           return false
