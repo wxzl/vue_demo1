@@ -7,6 +7,7 @@
       </div>
       <el-form
         ref="loginForm"
+        :rules="loginFormRules"
         :model="loginForm"
         class="login-form"
         label-position="left"
@@ -14,13 +15,13 @@
         <div class="title-container">
           <h3 class="title">用户登录</h3>
         </div>
-        <el-form-item>
+        <el-form-item prop="username">
           <el-input
             v-model="loginForm.username"
             prefix-icon="iconfont icon-user"
           ></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="password">
           <el-input
             v-model="loginForm.password"
             prefix-icon="iconfont icon-3702mima"
@@ -46,7 +47,20 @@ export default {
         username: 'admin',
         password: 'password'
       },
-      passwordType: 'password' // 密码类型
+      passwordType: 'password', // 密码类型
+      // 表单验证
+      loginFormRules: {
+        // 验证用户名是否合法
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { min: 3, max: 10, message: '长度在3到10个字符', trigger: 'blur' }
+        ],
+        // 验证密码是否合法
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 3, max: 10, message: '长度在3到10个字符', trigger: 'blur' }
+        ]
+      }
     }
   }
 }
