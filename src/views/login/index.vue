@@ -6,7 +6,7 @@
         <img src="../../assets/logo.png" alt="" />
       </div>
       <el-form
-        ref="loginForm"
+        ref="loginFormRef"
         :rules="loginFormRules"
         :model="loginForm"
         class="login-form"
@@ -30,7 +30,7 @@
         </el-form-item>
         <div class="btns">
           <el-button type="primary">登录</el-button>
-          <el-button type="info">重置</el-button>
+          <el-button type="info" @click="resetLoginForm">重置</el-button>
         </div>
       </el-form>
     </div>
@@ -61,6 +61,12 @@ export default {
           { min: 3, max: 10, message: '长度在3到10个字符', trigger: 'blur' }
         ]
       }
+    }
+  },
+  methods: {
+    // 点击重置按钮，重置登录表单
+    resetLoginForm() {
+      this.$refs.loginFormRef.resetFields()
     }
   }
 }
