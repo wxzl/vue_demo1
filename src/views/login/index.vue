@@ -29,7 +29,9 @@
           ></el-input>
         </el-form-item>
         <div class="btns">
-          <el-button type="primary">登录</el-button>
+          <el-button type="primary" @click.native.prevent="handleLogin"
+            >登录</el-button
+          >
           <el-button type="info" @click="resetLoginForm">重置</el-button>
         </div>
       </el-form>
@@ -41,6 +43,20 @@
 export default {
   name: 'Login',
   data() {
+    const validateUsername = (rule, value, callback) => {
+      if (value.length > 3 && value.length < 10) {
+        callback()
+      } else {
+        callback(new Error('请输入正确的用户名'))
+      }
+    }
+    const vaildPassword = (rule, value, callback) => {
+      if (value.length > 3 && value.length < 10) {
+        callback()
+      } else {
+        callback(new Error('请输入正确的密码'))
+      }
+    }
     return {
       // 登录表单数据绑定
       loginForm: {
@@ -52,13 +68,15 @@ export default {
       loginFormRules: {
         // 验证用户名是否合法
         username: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 3, max: 10, message: '长度在3到10个字符', trigger: 'blur' }
+          // { required: true, message: '请输入用户名', trigger: 'blur' },
+          // { min: 3, max: 10, message: '长度在3到10个字符', trigger: 'blur' },
+          { required: true, validator: validateUsername, trigger: 'blur' }
         ],
         // 验证密码是否合法
         password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 3, max: 10, message: '长度在3到10个字符', trigger: 'blur' }
+          { required: true, validator: vaildPassword, trigger: 'blur' }
+          // { required: true, message: '请输入密码', trigger: 'blur' },
+          // { min: 3, max: 10, message: '长度在3到10个字符', trigger: 'blur' },
         ]
       }
     }
@@ -67,6 +85,16 @@ export default {
     // 点击重置按钮，重置登录表单
     resetLoginForm() {
       this.$refs.loginFormRef.resetFields()
+    },
+    // 登录前预验证
+    handleLogin() {
+      this.$refs.loginFormRef.validate((valid) => {
+        if (valid) {
+          console.log('true')
+        } else {
+          return false
+        }
+      })
     }
   }
 }
