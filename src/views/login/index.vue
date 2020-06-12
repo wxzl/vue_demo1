@@ -90,7 +90,9 @@ export default {
       this.$refs.loginFormRef.validate((valid) => {
         if (valid) {
           this.loading = true
-          console.log('true')
+          this.$store.dispatch('login', this.loginForm).then(() => {
+            this.loading = false
+          })
         } else {
           return false
         }
