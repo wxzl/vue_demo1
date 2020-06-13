@@ -22,9 +22,9 @@ export default new Vuex.Store({
         login({ username: username.trim(), password: password }).then(res => {
           console.log(res)
           const { data } = res
-          commit('SET_TOKEN', data.data.token)
-          setToken(data.data.token)
-          resolve()
+          commit('SET_TOKEN', data.token)
+          setToken(data.token)
+          resolve(res.meta.msg)
         }).catch(error => {
           reject(error)
         })

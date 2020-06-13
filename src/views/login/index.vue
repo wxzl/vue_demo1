@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { Message } from 'element-ui'
 export default {
   name: 'Login',
   data() {
@@ -90,8 +91,13 @@ export default {
       this.$refs.loginFormRef.validate((valid) => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('login', this.loginForm).then(() => {
+          this.$store.dispatch('login', this.loginForm).then((mesg) => {
             this.loading = false
+            Message({
+              message: mesg,
+              type: 'success',
+              duration: 5 * 1000
+            })
           })
         } else {
           return false
